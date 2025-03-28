@@ -1,0 +1,2412 @@
+{
+	"info": {
+		"_postman_id": "c436032d-5fc9-4fc5-9242-8afe6359068b",
+		"name": "ARIPWBI",
+		"description": "LLamadas relacionadas con el servicio aripwbi  \nEste servicio permite obtener desde las contabilidades información de costes para que luego sea procesada por Power BI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "origenes",
+			"item": [
+				{
+					"name": "Leer todas los origenes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/origenes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"origenes"
+							]
+						},
+						"description": "Devuelve todos los orígenes de la base de datos"
+					},
+					"response": [
+						{
+							"name": "Leer todos los conceptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:8088/conceptos",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"conceptos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-OHDZ+P0j0MRMA+obUhjeZzZXP2s\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2019 08:17:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"concepto_id\": 4,\n        \"nombre\": \"Gastos de proveedores 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 10,\n        \"nombre\": \"Nuevo 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 11,\n        \"nombre\": \"N2\",\n        \"descripcion\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Leer un origen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/origenes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"origenes",
+								"1"
+							]
+						},
+						"description": "Permite obtener la información del origen que coincide con el id pasado en la url."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un origen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"origen_id\": 0,\n\t\"nombre\": \"Contabilidad 2\",\n\t\"contadb\": \"ariconta2\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/origenes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"origenes"
+							]
+						},
+						"description": "Permite crear un origen a partir del objeto json pasado"
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar un origen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"origen_id\": 1,\n\t\"nombre\": \"Contabilidad 1X\",\n\t\"contadb\": \"ariconta1\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/origenes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"origenes"
+							]
+						},
+						"description": "Se modifica el origen indicado que coincide con el id del objeto pasado en el cuerpo del mensaje. El resto de atributos se modifican para que coincidan con los pasados en el objeto."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un origen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/origenes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"origenes",
+								"2"
+							]
+						},
+						"description": "Elimina el origen cuyo id coincide con el pasado en la url"
+					},
+					"response": []
+				}
+			],
+			"description": "Los orígenes indican a qué contabilidad pertenece el coste que se está imputando. En cada origen se indica la base de datos de contabilidad desde la que se obtendrán los fatos\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "Leer todas las categorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"categorias"
+							]
+						},
+						"description": "Devuelve todos los conceptos de la base de datos"
+					},
+					"response": [
+						{
+							"name": "Leer todos los conceptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:8088/conceptos",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"conceptos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-OHDZ+P0j0MRMA+obUhjeZzZXP2s\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2019 08:17:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"concepto_id\": 4,\n        \"nombre\": \"Gastos de proveedores 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 10,\n        \"nombre\": \"Nuevo 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 11,\n        \"nombre\": \"N2\",\n        \"descripcion\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Leer una categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/categorias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"categorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoria_id\": 2,\n\t\"nombre\": \"Gastos generales (2)\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar una categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoria_id\": 1,\n\t\"nombre\": \"GastosX generales\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar una categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/categorias/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Los conceptos son las piezas fundamentales de la api. \nEl concepto agrupa una serie de cuentas contables bajo un mismo epígrafe. De este modo se considerará que todos los importes relacionados con esos apuntes pertenecen a ese concepto\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "periodos",
+			"item": [
+				{
+					"name": "Leer todas los periodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/periodos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"periodos"
+							]
+						},
+						"description": "Devuelve todos los periodos de la base de datos"
+					},
+					"response": [
+						{
+							"name": "Leer todos los conceptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:8088/conceptos",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"conceptos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-OHDZ+P0j0MRMA+obUhjeZzZXP2s\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2019 08:17:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"concepto_id\": 4,\n        \"nombre\": \"Gastos de proveedores 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 10,\n        \"nombre\": \"Nuevo 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 11,\n        \"nombre\": \"N2\",\n        \"descripcion\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Leer un periodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/periodos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"periodos",
+								"1"
+							]
+						},
+						"description": "Lee el periodo que conicide con el id pasado en la url\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un periodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"periodo_id\": 2,\n\t\"nombre\": \"NUN 2019\",\n\t\"fecha_inicio\": \"2019-01-01\",\n\t\"fecha_fin\": \"2019-01-31\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/periodos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"periodos"
+							]
+						},
+						"description": "Crea un periodo con los datos del objeto pasado en formato json el cuerpo del mensaje"
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar un periodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"periodo_id\": 1,\n\t\"nombre\": \"Periodo fijo año 2019\",\n\t\"fecha_inicio\": \"2019-01-01\",\n\t\"fecha_fin\": \"2019-12-31\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/periodos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"periodos"
+							]
+						},
+						"description": "Modifica el periodo cuyo id coincide con el del objeto pasado en el cuerpo.\nEl resto de atributos se igualan a los del objeto pasado.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un periodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/periodos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"periodos",
+								"2"
+							]
+						},
+						"description": "Elimina el periodo que cuyo id coincide con el pasado en la url"
+					},
+					"response": []
+				}
+			],
+			"description": "Los periodos se utizan para poder fijar periodos fijos en la contemplación de algunas asociaciones entre conceptos y cuentas.\nHay un tipo de periodificación que se llama fija y en la que se debe de elegir el periodo implicado (fecha inicio y fecha fin) de entre los dados de alta en esta entrada\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "conceptos",
+			"item": [
+				{
+					"name": "Leer todos los conceptos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos"
+							]
+						},
+						"description": "Devuelve todos los conceptos de la base de datos"
+					},
+					"response": [
+						{
+							"name": "Leer todos los conceptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:8088/conceptos",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"conceptos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-OHDZ+P0j0MRMA+obUhjeZzZXP2s\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2019 08:17:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"concepto_id\": 4,\n        \"nombre\": \"Gastos de proveedores 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 10,\n        \"nombre\": \"Nuevo 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 11,\n        \"nombre\": \"N2\",\n        \"descripcion\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Leer un concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos",
+								"1"
+							]
+						},
+						"description": "Lee el concepto que coincide cone el id pasado en la url. Si no lo encuentra devuelve el status 404"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_id\": 0,\n\t\"nombre\": \"Gastos luz\",\n\t\"descripcion\": \"Lo que vale la luz\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos"
+							]
+						},
+						"description": "Crea un concepto basándose en los datos pasados en el cuerpo del mensaje en formato JSON"
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_id\": 2,\n\t\"nombre\": \"Gastos luces\",\n\t\"descripcion\": \"Lo que valen las luces\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos"
+							]
+						},
+						"description": "Modifica el concepto que coincide con el id pasado en el objeto JSON del cuerpo del mensaje. El resto de atributos se modifican acorde con el valor de los atributos pasados.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos",
+								"2"
+							]
+						},
+						"description": "Elimina el concepto con que coincide con el ID pasado en la url"
+					},
+					"response": []
+				}
+			],
+			"description": "Los conceptos son las piezas fundamentales de la api. \nEl concepto agrupa una serie de cuentas contables bajo un mismo epígrafe. De este modo se considerará que todos los importes relacionados con esos apuntes pertenecen a ese concepto\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "conceptos cuentas",
+			"item": [
+				{
+					"name": "Leer todos los conceptos cuentas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas"
+							]
+						},
+						"description": "Devuelve todos los conceptos de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "Leer un concepto cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear concepto cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_cuenta_id\": 0,\n\t\"concepto_id\": 1,\n\t\"codmacta\": \"431000111\",\n\t\"nommacta\": \"Otro invento\",\n\t\"periodo\": \"DIA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear concepto cuenta extendido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_cuenta_id\": 0,\n\t\"concepto_id\": 14,\n\t\"codmacta\": \"610\",\n\t\"nommacta\": \"Multicuentas\",\n\t\"periodo\": \"DIA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas/ext",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas",
+								"ext"
+							]
+						},
+						"description": "Si se le pasa una cuenta raiz da de alta todas las relaciondas"
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar concepto cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"concepto_cuenta_id\": 1,\n    \"concepto_id\": 1,\n    \"codmacta\": \"43100018\",\n    \"nomacta\": \"Cuenta inventada\",\n    \"periodo\": \"MES\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar concepto cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer conceptos cuentas asociados a un concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_cuentas/concepto/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_cuentas",
+								"concepto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "conceptos apuntes",
+			"item": [
+				{
+					"name": "Leer todos los conceptos apuntes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes"
+							]
+						},
+						"description": "Devuelve todos los conceptos de la base de datos"
+					},
+					"response": []
+				},
+				{
+					"name": "Leer todos los apuntes paginados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes"
+							]
+						},
+						"description": "Devuelve los apuntes de la base de fatos pero en el formto paginado que necesita webix para sus datatables paginados."
+					},
+					"response": []
+				},
+				{
+					"name": "Leer un concepto apunte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear concepto apunte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_apunte_id\": 0,\n\t\"concepto_id\": 1,\n\t\"codmacta\": \"4310001999\",\n\t\"nomacta\": \"SATTT19999\",\n\t\"fechaent\": \"2019-01-03\",\n\t\"numasien\": 4589,\n\t\"numdocum\": \"ART9T\",\n\t\"ampconce\": \"AMP9999JKKA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear apuntes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_apunte_id\": 0,\n\t\"concepto_id\": 1,\n\t\"codmacta\": \"4310001999\",\n\t\"nomacta\": \"SATTT19999\",\n\t\"fechaent\": \"2019-01-03\",\n\t\"numasien\": 4589,\n\t\"numdocum\": \"ART9T\",\n\t\"ampconce\": \"AMP9999JKKA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes/crear_apuntes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes",
+								"crear_apuntes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear apuntes entre fechas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_apunte_id\": 0,\n\t\"concepto_id\": 1,\n\t\"codmacta\": \"4310001999\",\n\t\"nomacta\": \"SATTT19999\",\n\t\"fechaent\": \"2019-01-03\",\n\t\"numasien\": 4589,\n\t\"numdocum\": \"ART9T\",\n\t\"ampconce\": \"AMP9999JKKA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes/crear_apuntes/2019-01-01/2019-12-31",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes",
+								"crear_apuntes",
+								"2019-01-01",
+								"2019-12-31"
+							]
+						},
+						"description": "Incluye la posibilidad de pasar como parámetros las fechas entre las que queremos crear apuntes."
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar concepto apunte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"concepto_apunte_id\": 1,\n\t\"concepto_id\": 1,\n\t\"codmacta\": \"431000111\",\n\t\"nomacta\": \"Otro 45222\",\n\t\"fechaent\": \"2019-01-01\",\n\t\"numasien\": 4588,\n\t\"numdocum\": \"ARTTT\",\n\t\"ampconce\": \"AMPLIIIAJJKKA\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar concepto apunte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer conceptos apuntes asociados a un concepto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/conceptos_apuntes/concepto/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"conceptos_apuntes",
+								"concepto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "898c93d7-639f-46b5-8669-cffa627f1019",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1258574-fbda-4549-8f96-231875651a70",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "contabilidad",
+			"item": [
+				{
+					"name": "empresa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad/empresa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad",
+								"empresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cuentas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad/cuentas/43.4298",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad",
+								"cuentas",
+								"43.4298"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apuntes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad/apuntes/430006961",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad",
+								"apuntes",
+								"430006961"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cuentas_raiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad/cuentas_raiz/43",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad",
+								"cuentas_raiz",
+								"43"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apuntes_raiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad/cuentas_raiz/43",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad",
+								"cuentas_raiz",
+								"43"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contabilidad_db",
+			"item": [
+				{
+					"name": "empresa db",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad_db/empresa/ariconta1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad_db",
+								"empresa",
+								"ariconta1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cuentas db",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad_db/cuentas/ariconta1/43.1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad_db",
+								"cuentas",
+								"ariconta1",
+								"43.1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apuntes db",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad_db/apuntes/ariconta1/430000001",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad_db",
+								"apuntes",
+								"ariconta1",
+								"430000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cuentas_raiz db",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad_db/cuentas_raiz/ariconta1/43",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad_db",
+								"cuentas_raiz",
+								"ariconta1",
+								"43"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apuntes_raiz db",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/contabilidad_db/cuentas_raiz/ariconta1/43",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"contabilidad_db",
+								"cuentas_raiz",
+								"ariconta1",
+								"43"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8088/version",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"version"
+					]
+				},
+				"description": "Obtiene la versión del programa tal y como figura en el package.json"
+			},
+			"response": [
+				{
+					"name": "Version",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/version",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"version"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"44-b47v9tKrpQIlbR35Szg91zpUdHA\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 08 Mar 2019 09:05:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"aripwbi_api\",\n    \"version\": \"0.0.1\",\n    \"description\": \"ARIPWBI API\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\": \"root\",\n\t\"password\": \"aritel\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8088/usuarios/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"login"
+					]
+				},
+				"description": "Se utiliza par hacer login en la aplicación. A través de este punto se obtiene información del usuario, el token necesario para la autorización de acceso a otras funciones y el grupo al que pertenece el usuario que lleva aparejados los permisos de la parte cliente web."
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"root\",\n\t\"password\": \"sass\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/usuarios/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-ubFxoq01PVWYlImPm5BQUFhCW14\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 08 Mar 2019 09:15:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"message\": \"Falló la autentificación\"\n    }\n}"
+				},
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"root\",\n\t\"password\": \"aritel\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/usuarios/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "602"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25a-zhLquHvbWMFATMKZE9f3TjRJD5g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 08 Mar 2019 09:07:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"usuario\": {\n        \"codusu\": 9999,\n        \"nomusu\": \"Administrador\",\n        \"dirfich\": null,\n        \"nivelusu\": 0,\n        \"login\": \"root\",\n        \"passwordpropio\": \"aritel\",\n        \"nivelusuges\": 0,\n        \"nivelariges\": 0,\n        \"nivelsumi\": -1,\n        \"nivelusutra\": 0,\n        \"nivelpres\": 0,\n        \"skin\": 2,\n        \"solotesoreria\": 0,\n        \"nivelusupan\": 1,\n        \"nivelusupwbi\": 1\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub211c3UiOiJBZG1pbmlzdHJhZG9yIiwiY29kdXN1Ijo5OTk5LCJpYXQiOjE1NTIwMzYwNjAsImV4cCI6MTU1MjA1NDA2MH0.i66nUzJhuTPCjghBI1IdAad4yZWMj72REHy1GJYUU8o\",\n    \"grupoUsuario\": {\n        \"grupo_usuario_id\": 1,\n        \"nombre\": \"Administradores\",\n        \"inicio\": 5,\n        \"administracion\": 5,\n        \"gruposUsuarios\": 5,\n        \"usuarios\": 5,\n        \"gestion\": 5,\n        \"conceptos\": 5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Connector",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8088/connector/aripwbi/conceptos",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"connector",
+						"aripwbi",
+						"conceptos"
+					]
+				},
+				"description": "Connector es un punto de propoósito general que permite la obtención de todos los registros de una tabla en una base de datos dada.\nEl formaro de la peticición es:\n/connector/db/table\nEn el que \"db\" es el nombre de la base de datos y \"table\" el de la tabla de la que se desea obtener los registros.\n"
+			},
+			"response": [
+				{
+					"name": "Connector",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8088/connector/aripwbi/conceptos",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"connector",
+								"aripwbi",
+								"conceptos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "176"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b0-OHDZ+P0j0MRMA+obUhjeZzZXP2s\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 08 Mar 2019 09:13:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"concepto_id\": 4,\n        \"nombre\": \"Gastos de proveedores 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 10,\n        \"nombre\": \"Nuevo 1\",\n        \"descripcion\": \"\"\n    },\n    {\n        \"concepto_id\": 11,\n        \"nombre\": \"N2\",\n        \"descripcion\": \"\"\n    }\n]"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ffc1ef82-0f5a-4361-a501-5e892e3f53f6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e24659bb-beb0-4b1e-b61d-d99a2c7bfd39",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

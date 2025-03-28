@@ -1,0 +1,2 @@
+Para pwbi cáldulo de dias entre fechas para generar valor)
+= Table.AddColumn(#"Filas filtradas2", "fechaValor", each {Number.From([fechaInicioContrato])..Number.From([fechaFinContrato])-1})
